@@ -1,0 +1,124 @@
+﻿@model CreateContactDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UiLayout/Index.cshtml";
+}
+
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+				@if (TempData["MessageSend"] != null)
+				{
+					<div class="d-flex justify-content-center mb-4" data-aos="fade-down" data-aos-delay="50">
+						<div class="alert alert-success shadow-sm d-flex align-items-center gap-2 px-4 py-3 rounded-3"
+							 style="max-width: 400px; text-align: center;">
+							<i class="bi bi-check-circle-fill" style="font-size: 1.5rem;"></i>
+							<div>
+								<h5 class="mb-0 fw-semibold">Mesajınız gönderildi</h5>
+								<small>Teşekkür ederiz!</small>
+							</div>
+						</div>
+					</div>
+				}
+
+				<div class="contact-info">
+
+					<div class="address mt-2">
+						<i class="icon-room"></i>
+						<h4 class="mb-2">Lokasyon:</h4>
+						<p>Şişli / Mecidiyeköy<br>İstanbul</p>
+					</div>
+
+					<div class="open-hours mt-4">
+						<i class="icon-clock-o"></i>
+						<h4 class="mb-2">Açık saatler:</h4>
+						<p>
+							Pazartesi-Cuma:<br>
+							09.00 - 2300
+						</p>
+					</div>
+
+					<div class="email mt-4">
+						<i class="icon-envelope"></i>
+						<h4 class="mb-2">Mail Adresi:</h4>
+						<p>abdullahhaktan9@gmail.com</p>
+					</div>
+
+					<div class="phone mt-4">
+						<i class="icon-phone"></i>
+						<h4 class="mb-2">Telefon numarası:</h4>
+						<p>+90 5314945538</p>
+					</div>
+
+				</div>
+
+			</div>
+			<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+				<form asp-action="GetResponse" method="post" class="row g-3 align-items-center w-lg-75 mx-auto">
+					<div class="row">
+						<div class="col-6 mb-3">
+							<input type="text" class="form-control" placeholder="İsminiz" asp-for="NameSurname">
+						</div>
+						<div class="col-6 mb-3">
+							<input type="email" class="form-control" placeholder="Mail Adresiniz" asp-for=Email">
+						</div>
+						<div class="col-6 mb-3">
+							<input type="text" class="form-control" placeholder="Kullanıcı Adınız" asp-for=UserName">
+						</div>
+						<div class="col-12 mb-3">
+							<input type="text" class="form-control" placeholder="Mesaj konusu" asp-for="Subject">
+						</div>
+						<div class="col-12 mb-3">
+							<textarea cols="30" rows="7" class="form-control" placeholder="Message" asp-for="Content"></textarea>
+						</div>
+
+						<div class="col-12">
+							<input type="submit" value="Mesajı gönder" class="btn btn-primary">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="suggestionModal" tabindex="-1" aria-labelledby="suggestionModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content rounded-3 shadow">
+			<div class="modal-header">
+				<h5 class="modal-title" id="suggestionModalLabel">Önerilen Yerler</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+			</div>
+			<div class="modal-body">
+				@if (TempData["Response"] != null)
+				{
+					var response = TempData["Response"].ToString()
+					.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+					<ul class="list-group">
+						@foreach (var item in response)
+						{
+							<li class="list-group-item">@item.TrimStart('-', ' ') </li>
+						}
+					</ul>
+				}
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	// Eğer backend'den Suggestion geldiyse modal aç
+	@if (TempData["Response"] != null)
+	{
+			<text>
+					document.addEventListener("DOMContentLoaded", function() {
+						var myModal = new bootstrap.Modal(document.getElementById('suggestionModal'));
+						myModal.show();
+					});
+			</text>
+	}
+</script>

@@ -1,0 +1,58 @@
+﻿@using Blogy.Business.DTOs.UserDtos
+@model List<ResultUserDto>
+
+@{
+    ViewData["Title"] = "Kullanıcılar";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0 fw-semibold">👥 Kullanıcılar</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width: 5%;">#</th>
+                            <th style="width: 20%;">Ad Soyad</th>
+                            <th style="width: 15%;">Kullanıcı Adı</th>
+                            <th style="width: 20%;">Email</th>
+                            <th style="width: 25%;">Roller</th>
+                            <th style="width: 15%;" class="text-center">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@user.FullName</td>
+                                <td>@user.UserName</td>
+                                <td>@user.Email</td>
+                                <td>
+                                    @foreach (var role in user.Roles)
+                                    {
+                                        <span class="badge bg-info text-dark me-1">@role</span>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    <a href="/Admin/User/AssignRole/@user.Id" class="btn btn-sm btn-warning">
+                                        <i class="fa fa-user-tag me-1"></i> Rol Ata
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

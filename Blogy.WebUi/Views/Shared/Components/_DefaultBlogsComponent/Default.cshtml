@@ -1,0 +1,44 @@
+﻿@model List<ResultCategoryDto>
+
+@*
+   Default Index Component
+*@
+
+@foreach (var category in Model)
+{
+    <section class="section">
+        <div class="container">
+
+            <div class="row mb-4">
+                <div class="col-sm-6">
+                    <h2 class="posts-entry-title">@category.CategoryName</h2>
+                </div>
+                <div class="col-sm-6 text-sm-end"><a href="/Blog/GetBlogsByCategory/@category.Id" class="read-more">Tümünü Gör</a></div>
+            </div>
+            <div class="row">
+
+                @foreach (var blog in category.Blogs)
+                {
+                    <div class="col-lg-4 mb-4">
+                        <div class="post-entry-alt">
+                            <a href="/Blog/BlogDetails/@blog.Id" class="img-link"><img src="@blog.CoverImage" alt="Image" class="img-fluid"></a>
+                            <div class="excerpt">
+
+                                <h2><a href="/Blog/BlogDetails/@blog.Id">@blog.Title</a></h2>
+                                <div class="post-meta align-items-center text-left clearfix">
+                                    <figure class="author-figure mb-0 me-3 float-start"><img src="@blog.Writer.ImageUrl" alt="Image" class="img-fluid"></figure>
+                                    <span class="d-inline-block mt-1">By <a href="#">@blog.Writer.FullName</a></span>
+                                    <span>&nbsp;-&nbsp; @blog.CreatedDate.ToShortDateString() </span>
+                                </div>
+
+                                <p>@(blog.Description.Length < 100 ? blog.Description : blog.Description.Substring(0, 100) + "...") </p>
+                                <p><a href="/Blog/BlogDetails/@blog.Id" class="read-more">Devamını oku</a></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </section>
+}

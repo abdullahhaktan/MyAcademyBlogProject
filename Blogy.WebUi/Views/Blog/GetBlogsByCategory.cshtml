@@ -1,0 +1,78 @@
+﻿@using PagedList.Core
+@using PagedList.Core.Mvc
+@model PagedList<ResultBlogDto>
+
+@{
+	ViewData["Title"] = "GetBlogsByCategory";
+	Layout = "~/Views/UiLayout/Index.cshtml";
+
+	var customOptions = PagedListRenderOptions.Bootstrap4PageNumbersPlusPrevAndNext;
+
+	customOptions.LinkToPreviousPageFormat = "<--";
+	customOptions.LinkToNextPageFormat = "-->";
+}
+
+<div class="section search-result-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="heading">@ViewBag.CategoryName</div>
+			</div>
+		</div>
+		<div class="row posts-entry">
+			<div class="col-lg-8">
+
+				@foreach(var item in Model)
+				{
+					<div class="blog-entry d-flex blog-entry-search-item">
+						<a href="single.html" class="img-link me-4">
+							<img src="@item.CoverImage" alt="Image" class="img-fluid">
+						</a>
+						<div>
+							<span class="date">@item.CreatedDate &bullet; <a href="#">Business</a></span>
+                            <h2><a href="#">@item.Title</a></h2>
+							<p>@(item.Description.Length < 100 ? item.Description : item.Description.Substring(0, 100) + "...")</p>
+							<p><a href="/Blog/BlogDetails/@item.Id" class="btn btn-sm btn-outline-primary">Devamını Oku</a></p>
+						</div>
+					</div>
+				}
+
+				<div class="row text-start pt-5 border-top">
+					<div class="col-md-12">
+						<pager asp-action="Index" asp-controller="Blog" list="@Model" options="customOptions"></pager>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-lg-4 sidebar">
+
+				<div class="sidebar-box search-form-wrap mb-4">
+					<form action="#" class="sidebar-search-form">
+						<span class="bi-search"></span>
+						<input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+					</form>
+				</div>
+				<!-- END sidebar-box -->
+                @await Component.InvokeAsync("_BlogsByCategoryLatestBlogsComponent")
+				<!-- END sidebar-box -->
+				@await Html.PartialAsync("/Views/Blog/CategoryCountBlogComponent.cshtml")
+				<!-- END sidebar-box -->
+
+				<div class="sidebar-box">
+					<h3 class="heading">Etiketler</h3>
+					<ul class="tags">
+						@foreach (var item in Model)
+						{
+							@foreach(var item1 in item.BlogTags)
+							{
+								<li><a href="#">@item1.Tag.Name</a></li>
+							}
+						}
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

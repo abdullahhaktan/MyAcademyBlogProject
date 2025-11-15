@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewData["Title"] = "Hakkımızda";
+    Layout = "~/Views/UiLayout/Index.cshtml";
+}
+
+<section class="about-section">
+    <div class="container">
+        <h1 class="about-title">Hakkımızda</h1>
+        <p class="about-text">
+            <strong>Haktan Teknoloji</strong>, yenilikçi yazılım çözümleri geliştirmek ve işletmelerin dijital dönüşüm süreçlerine katkı sağlamak amacıyla kurulmuş bir teknoloji firmasıdır.
+            Alanında uzman mühendis kadromuzla, modern yazılım mimarileri ve ileri düzey mühendislik yaklaşımları kullanarak müşterilerimize yüksek kaliteli, ölçeklenebilir ve güvenilir sistemler sunuyoruz.
+        </p>
+
+        <div class="founder-card">
+            <img src="~/images/abdullah1.png" alt="Abdullah Haktan" class="founder-img">
+            <div class="founder-info">
+                <h2>Abdullah Haktan</h2>
+                <p><strong>Bilgisayar Mühendisi | Full-Stack .NET Developer</strong></p>
+                <p><i class="fas fa-university"></i> Atatürk Üniversitesi</p>
+                <p><i class="fas fa-envelope"></i> abdullahhaktan9@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="vision-mission">
+            <div class="vision">
+                <h3>Vizyonumuz</h3>
+                <p>
+                    Yazılım teknolojileri alanında yenilikçi çözümler üreterek global ölçekte tanınan bir marka haline gelmek.
+                </p>
+            </div>
+            <div class="mission">
+                <h3>Misyonumuz</h3>
+                <p>
+                    Müşterilerimizin iş süreçlerine değer katan, kaliteli ve sürdürülebilir yazılım çözümleri sunarak dijital dönüşümlerine liderlik etmek.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about-section {
+        padding: 60px 0;
+        background: #f9fafb;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .about-title {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 30px;
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #444;
+        text-align: justify;
+        margin-bottom: 50px;
+    }
+
+    .founder-card {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        padding: 25px;
+        gap: 25px;
+        margin-bottom: 50px;
+    }
+
+    .founder-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .founder-info h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    .founder-info p {
+        margin: 5px 0;
+        color: #666;
+    }
+
+    .vision-mission {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .vision, .mission {
+        flex: 1;
+        min-width: 300px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        padding: 25px;
+    }
+
+        .vision h3, .mission h3 {
+            color: #0d6efd;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .vision p, .mission p {
+            color: #555;
+            line-height: 1.6;
+        }
+</style>

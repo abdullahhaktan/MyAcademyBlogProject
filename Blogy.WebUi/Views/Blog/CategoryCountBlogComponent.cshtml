@@ -1,0 +1,19 @@
+﻿
+@*
+    Blog Kategori Component
+*@
+
+<div class="sidebar-box">
+    <h3 class="heading">Kategoriler</h3>
+    <ul class="categories">
+        @foreach (var item in ViewBag.blogAndCounts)
+        {
+            <li>
+                <a href="/Blog/GetBlogsByCategory/@item.CategoryId">
+                    @item.CategoryName
+                    <span>(@item.BlogCount)</span>
+                </a>
+            </li>
+        }
+    </ul>
+</div>

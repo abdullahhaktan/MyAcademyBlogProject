@@ -1,0 +1,48 @@
+﻿@*
+    Last 3 blogs
+*@
+
+<div class="col-lg-4">
+    <div class="widget">
+        <h3 class="mb-4">Son eklenen 3 blog</h3>
+        <div class="post-entry-footer">
+            <ul>
+                <li>
+                    <a href="/Blog/BlogDetails/@ViewBag.last3Blogs[0].Id">
+                        <img src="@ViewBag.last3Blogs[0].CoverImage" alt="Image placeholder" class="me-4 rounded">
+                        <div class="text">
+                            <h4>@ViewBag.last3Blogs[0].Title</h4>
+                            <div class="post-meta">
+                                <span class="mr-2">@ViewBag.last3Blogs[0].CreatedDate</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@ViewBag.last3Blogs[1].Id">
+                        <img src="@ViewBag.last3Blogs[1].CoverImage" alt="Image placeholder" class="me-4 rounded">
+                        <div class="text">
+                            <h4>@ViewBag.last3Blogs[1].Title</h4>
+                            <div class="post-meta">
+                                <span class="mr-2">@ViewBag.last3Blogs[1].CreatedDate</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="@ViewBag.last3Blogs[2].Id">
+                        <img src="@ViewBag.last3Blogs[2].CoverImage" alt="Image placeholder" class="me-4 rounded">
+                        <div class="text">
+                            <h4>@ViewBag.last3Blogs[2].Title</h4>
+                            <div class="post-meta">
+                                <span class="mr-2">@ViewBag.last3Blogs[2].CreatedDate</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div> <!-- /.widget -->
+</div>

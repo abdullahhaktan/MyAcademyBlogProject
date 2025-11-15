@@ -1,0 +1,133 @@
+﻿@model CreateBlogDto
+
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    ViewData["Title"] = "Yeni Blog Oluştur";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0 fw-semibold">📝 Yeni Blog Oluştur</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <form method="post">
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-semibold">Blog Başlığı</label>
+                    <input type="text" asp-for="Title" class="form-control" placeholder="Blog başlığını giriniz" />
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-semibold">Açıklama</label>
+                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Kısa bir açıklama yazınız"></textarea>
+                    <span class="text-danger" asp-validation-for="Description"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CoverImage" class="form-label fw-semibold">Kapak Resmi URL</label>
+                    <input type="text" asp-for="CoverImage" class="form-control" placeholder="Kapak görseli bağlantısı" />
+                    <span class="text-danger" asp-validation-for="CoverImage"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="BlogImage1" class="form-label fw-semibold">Blog Resmi 1</label>
+                        <input type="text" asp-for="BlogImage1" class="form-control" placeholder="Resim 1 URL" />
+                        <span class="text-danger" asp-validation-for="BlogImage1"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="BlogImage2" class="form-label fw-semibold">Blog Resmi 2</label>
+                        <input type="text" asp-for="BlogImage2" class="form-control" placeholder="Resim 2 URL" />
+                        <span class="text-danger" asp-validation-for="BlogImage2"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="CategoryId" class="form-label fw-semibold">Kategori</label>
+                    <select asp-for="CategoryId" class="form-select" asp-items="@ViewBag.categories">
+                        <option selected disabled>Kategori Seçiniz</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="CategoryId"></span>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success px-4 fw-semibold">
+                        <i class="fa fa-save me-1"></i> Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<section class="pt-6">
+    <div class="container">
+        <div class="py-8 px-5 position-relative text-center" style="background-color: rgba(223, 215, 249, 0.199); border-radius: 129px 20px 20px 20px;">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <h2 class="text-secondary lh-1-7 mb-7">Makale Oluştur</h2>
+
+                    <form id="generateArticleForm" class="row g-3 align-items-center w-lg-75 mx-auto">
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" name="shortDescription" placeholder="Kısa açıklama giriniz" />
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" name="keywords" placeholder="Anahtar kelimeleri virgülle giriniz" />
+                        </div>
+                        <div class="col-sm-auto">
+                            <button class="btn btn-danger fs--1" type="submit">Makale Oluştur</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="articleModal" tabindex="-1" aria-labelledby="articleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-3 shadow">
+            <div class="modal-header">
+                <h5 class="modal-title" id="articleModalLabel">Oluşturulan Makale</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body" id="articleModalBody">
+                <!-- Makale buraya eklenecek -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS (bundle) -->
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById("generateArticleForm").addEventListener("submit", async function(e){
+        e.preventDefault();
+        const form = e.target;
+        const shortDescription = form.shortDescription.value;
+        const keywords = form.keywords.value;
+
+        if(!shortDescription || !keywords){
+            alert("Kısa açıklama ve anahtar kelimeler boş olamaz.");
+            return;
+        }
+
+        const response = await fetch(`/Admin/Blog/GenerateArticle?shortDescription=${encodeURIComponent(shortDescription)}&keywords=${encodeURIComponent(keywords)}`);
+
+        const result = await response.json();
+
+        if(result.success){
+            document.getElementById("articleModalBody").innerText = result.article;
+            const myModal = new bootstrap.Modal(document.getElementById('articleModal'));
+            myModal.show();
+        } else {
+            alert(result.message);
+        }
+    });
+</script>

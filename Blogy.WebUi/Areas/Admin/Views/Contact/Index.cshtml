@@ -1,0 +1,52 @@
+﻿@model List<ResultContactDto>
+
+@{
+    ViewData["Title"] = "Gelen Mesajlar";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-3 overflow-hidden">
+        <div class="card-header bg-dark text-white text-center py-3">
+            <h3 class="fw-bold text-primary mb-1">📬 Gelen Mesajlar</h3>
+            <small class="text-light-50">Toplam @Model.Count() mesaj</small>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <!-- 🔹 Responsive scroll burada -->
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Kullanıcı</th>
+                            <th scope="col">Mail Adresi</th>
+                            <th scope="col">Konu</th>
+                            <th scope="col" style="min-width: 300px;">Mesaj</th>
+                            <th scope="col">Tarih</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var message in Model)
+                        {
+                            <tr>
+                                <td class="fw-semibold">@message.Id</td>
+                                <td>@message.UserName</td>
+                                <td class="text-muted">@message.Email</td>
+                                <td>@message.Subject</td>
+                                <td>
+                                    <div class="text-truncate" style="max-width: 350px;">
+                                        @message.Content
+                                    </div>
+                                </td>
+                                <td>@message.CreatedDate.ToString("dd MMM yyyy HH:mm")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

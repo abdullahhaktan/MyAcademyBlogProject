@@ -1,0 +1,114 @@
+﻿@model RegisterDto
+
+@{
+    ViewData["Title"] = "Kayıt Ol";
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kayıt Ol | Panel</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/login-form-20/css/style.css">
+
+    <style>
+        body {
+            background: url('/Templates/login-form-20/images/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .login-wrap {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+            padding: 40px 30px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border: none;
+            border-radius: 8px;
+            transition: all .3s ease;
+        }
+
+            .btn-primary:hover {
+                background-color: #0b5ed7;
+                transform: translateY(-1px);
+            }
+    </style>
+</head>
+
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-6 text-center">
+                    <h2 class="heading-section text-white fw-bold mt-5">Kayıt Paneli</h2>
+                    <p class="text-dark">Hesabını oluştur ve hemen giriş yap 🚀</p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap">
+                        <h4 class="mb-4 text-center text-dark fw-bold">Yeni Hesap Oluştur</h4>
+
+                        <form method="post" class="signin-form">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Ad" asp-for="FirstName" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Soyad" asp-for="LastName" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="email" class="form-control" placeholder="E-Posta Adresi" asp-for="Email" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" placeholder="Kullanıcı Adı" asp-for="UserName" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="password" class="form-control" placeholder="Şifre" asp-for="Password" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="password" class="form-control" placeholder="Şifre Onay" asp-for="ConfirmPassword" required>
+                            </div>
+
+                            <div class="text-danger mb-3">
+                                @Html.ValidationSummary()
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Kayıt Ol</button>
+                            </div>
+
+                            <div class="form-group d-flex justify-content-between align-items-center">
+                                <label class="checkbox-wrap checkbox-primary mb-0">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span> Beni Hatırla
+                                </label>
+                                <a href="/Login/Index" class="text-decoration-none small text-primary">Giriş Yap</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/login-form-20/js/jquery.min.js"></script>
+    <script src="~/login-form-20/js/popper.js"></script>
+    <script src="~/login-form-20/js/bootstrap.min.js"></script>
+    <script src="~/login-form-20/js/main.js"></script>
+</body>
+</html>

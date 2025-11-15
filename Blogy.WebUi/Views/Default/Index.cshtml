@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UiLayout/Index.cshtml";
+}
+
+<section class="section bg-light">
+	<div class="container">
+		<div class="row align-items-stretch retro-layout">
+			<div class="col-md-4">
+				<a href="/Blog/BlogDetails/@ViewBag.Last5Blog[0].Id" class="h-entry mb-30 v-height gradient">
+
+					<div class="featured-img" style="background-image: url('@ViewBag.Last5Blog[0].CoverImage');"></div>
+
+					<div class="text">
+						<span class="date">@ViewBag.Last5Blog[0].CreatedDate.ToShortDateString()</span>
+						<h2>@ViewBag.Last5Blog[0].Description</h2>
+					</div>
+				</a>
+				<a href="/Blog/BlogDetails/@ViewBag.Last5Blog[1].Id" class="h-entry v-height gradient">
+
+					<div class="featured-img" style="background-image: url('@ViewBag.Last5Blog[1].CoverImage');"></div>
+
+					<div class="text">
+						<span class="date">@ViewBag.Last5Blog[1].CreatedDate</span>
+						<h2>@ViewBag.Last5Blog[1].Description</h2>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/Blog/BlogDetails/@ViewBag.Last5Blog[2].Id" class="h-entry img-5 h-100 gradient">
+
+					<div class="featured-img" style="background-image: url('@ViewBag.Last5Blog[2].CoverImage');"></div>
+
+					<div class="text">
+						<span class="date">@ViewBag.Last5Blog[1].CreatedDate</span>
+						<h2>@ViewBag.Last5Blog[2].Description</h2>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="/Blog/BlogDetails/@ViewBag.Last5Blog[3].Id" class="h-entry mb-30 v-height gradient">
+
+					<div class="featured-img" style="background-image: url('@ViewBag.Last5Blog[3].CoverImage');"></div>
+
+					<div class="text">
+						<span class="date">@ViewBag.Last5Blog[3].CreatedDate</span>
+						<h2>@ViewBag.Last5Blog[3].Description</h2>
+					</div>
+				</a>
+				<a href="/Blog/BlogDetails/@ViewBag.Last5Blog[4].Id" class="h-entry v-height gradient">
+
+					<div class="featured-img" style="background-image: url('@ViewBag.Last5Blog[4].CoverImage');"></div>
+
+					<div class="text">
+						<span class="date">Apr. 14th, 2022</span>
+						<h2>@ViewBag.Last5Blog[4].Description</h2>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+@await Component.InvokeAsync("_DefaultBlogsComponent")

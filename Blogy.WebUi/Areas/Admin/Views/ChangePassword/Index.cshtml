@@ -1,0 +1,43 @@
+﻿@model ChangePasswordDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">Şifre Değiştirme</h4>
+        </div>
+        <div class="card-body p-4">
+            <form method="post">
+
+                <div class="mb-3">
+                    <label asp-for="CurrentPassword" class="form-label">Mevcut Şifreniz</label>
+                    <input type="password" asp-for="CurrentPassword" class="form-control" placeholder="Mevcut Şifre" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="NewPassword" class="form-label">Yeni Şifreniz</label>
+                    <input type="password" asp-for="NewPassword" class="form-control" placeholder="Yeni Şifre" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label">Yeni Şifrenizi Tekrar Girin</label>
+                    <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Yeni Şifre (Tekrar)" required />
+                </div>
+
+                <div class="text-danger mb-3">
+                    @Html.ValidationSummary()
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg">Şifreyi Değiştir</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

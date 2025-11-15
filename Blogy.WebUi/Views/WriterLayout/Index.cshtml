@@ -1,0 +1,201 @@
+﻿@{
+    Layout = null;
+}
+
+@* Views/Shared/_WriterLayout.cshtml *@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Writer Panel</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --sidebar: #162447;
+            --nav: #1f4068;
+            --text: #e0e1dd;
+            --muted: #a4a6a8;
+            --accent: #fca311;
+            --border: rgba(255,255,255,0.05);
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* === SIDEBAR === */
+        .sidebar {
+            width: 220px;
+            background: var(--sidebar);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border);
+            transition: width 0.3s;
+        }
+
+        .sidebar-header {
+            font-size: 20px;
+            font-weight: 600;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            color: var(--accent);
+        }
+
+        .nav-links {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0;
+        }
+
+            .nav-links a {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: var(--muted);
+                text-decoration: none;
+                padding: 12px 24px;
+                transition: all 0.25s;
+            }
+
+                .nav-links a:hover,
+                .nav-links a.active {
+                    background: rgba(252, 163, 17, 0.1);
+                    color: var(--accent);
+                }
+
+            .nav-links i {
+                width: 18px;
+                text-align: center;
+            }
+
+        .logout {
+            border-top: 1px solid var(--border);
+            padding: 16px 24px;
+            font-size: 14px;
+            color: #f87171;
+            cursor: pointer;
+        }
+
+        /* === MAIN AREA === */
+        .main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .navbar {
+            background: var(--nav);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+            .navbar h1 {
+                font-size: 18px;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .navbar .user-info {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: var(--muted);
+            }
+
+                .navbar .user-info i {
+                    color: var(--accent);
+                }
+
+        .content {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        @@media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                z-index: 1000;
+                height: 100%;
+                left: -220px;
+            }
+
+                .sidebar.open {
+                    left: 0;
+                }
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-pen-nib"></i> Writer Panel
+        </div>
+        <nav class="nav-links">
+            <a href="/Writer/Profile/Index"><i class="fa-solid fa-user"></i> Profil </a>
+            <a href="/Writer/Blog/Index"><i class="fa-solid fa-user"></i> Blog </a>
+            <a href="/Writer/ChangePassword/Index"><i class="fa-solid fa-gear"></i> Şifre Değiştir </a>
+        </nav>
+        <div class="logout" onclick="location.href='/Login/Logout'">
+            <i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="navbar">
+            <h1>@ViewData["Title"]</h1>
+            <div class="user-info">
+                <i class="fa-solid fa-user-pen"></i> @User.Identity?.Name
+            </div>
+        </div>
+
+        <div class="content">
+            @RenderBody()
+        </div>
+
+        <footer class="footer">
+            © 2025 Writer Panel - Tüm Hakları Saklıdır.
+        </footer>
+    </main>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') sidebar.classList.remove('open');
+        });
+    </script>
+</body>
+</html>

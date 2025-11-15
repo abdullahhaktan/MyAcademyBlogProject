@@ -1,0 +1,71 @@
+﻿@model UpdateBlogDto
+
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    ViewData["Title"] = "Blog Güncelle";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-warning text-dark text-center">
+            <h4 class="mb-0 fw-semibold">✏️ Blog Güncelle</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <form method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-semibold">Blog Başlığı</label>
+                    <input type="text" asp-for="Title" class="form-control" placeholder="Blog başlığını düzenle" />
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-semibold">Açıklama</label>
+                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Blog açıklamasını düzenle"></textarea>
+                    <span class="text-danger" asp-validation-for="Description"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CoverImage" class="form-label fw-semibold">Kapak Resmi URL</label>
+                    <input type="text" asp-for="CoverImage" class="form-control" placeholder="Kapak görseli bağlantısı" />
+                    <span class="text-danger" asp-validation-for="CoverImage"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="BlogImage1" class="form-label fw-semibold">Blog Resmi 1</label>
+                        <input type="text" asp-for="BlogImage1" class="form-control" placeholder="Resim 1 URL" />
+                        <span class="text-danger" asp-validation-for="BlogImage1"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="BlogImage2" class="form-label fw-semibold">Blog Resmi 2</label>
+                        <input type="text" asp-for="BlogImage2" class="form-control" placeholder="Resim 2 URL" />
+                        <span class="text-danger" asp-validation-for="BlogImage2"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="CategoryId" class="form-label fw-semibold">Kategori</label>
+                    <select asp-for="CategoryId" class="form-select" asp-items="@ViewBag.categories">
+                        <option disabled selected>Kategori Seçiniz</option>
+                    </select>
+                    <span class="text-danger" asp-validation-for="CategoryId"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="/Blog/Index" class="btn btn-outline-secondary fw-semibold">
+                        <i class="fa fa-arrow-left me-1"></i> Geri Dön
+                    </a>
+
+                    <button type="submit" class="btn btn-primary px-4 fw-semibold">
+                        <i class="fa fa-save me-1"></i> Güncelle
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

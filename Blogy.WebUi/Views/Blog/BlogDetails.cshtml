@@ -1,0 +1,118 @@
+﻿@model ResultBlogDto
+
+@{
+    ViewData["Title"] = "BlogDetails";
+    Layout = "~/Views/UiLayout/Index.cshtml";
+}
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('@Model.CoverImage?');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-6">
+                <div class="post-entry text-center">
+                    <h1 class="mb-4">@Model.Title</h1>
+                    <div class="post-meta align-items-center text-center">
+                        <figure class="author-figure mb-0 me-3 d-inline-block"><img style="width:50px;height:50px" src="@Model.Writer.ImageUrl" alt="Image" class="img-fluid"></figure>
+                        <span class="d-inline-block mt-1">By @Model.Writer.FullName</span>
+                        <span>&nbsp;-&nbsp; @Model.CreatedDate?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+
+        <div class="row blog-entries element-animate">
+
+            <div class="col-md-12 col-lg-8 main-content">
+
+                <div class="post-content-body">
+
+                    <div class="row my-4">
+                        <div class="col-md-12 mb-4">
+                            <img src="@Model.CoverImage?" alt="Image placeholder" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <img src="@Model.BlogImage1?" alt="Image placeholder" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <img src="@Model.BlogImage2?" alt="Image placeholder" class="img-fluid rounded">
+                        </div>
+                    </div>
+                    <p>@Model.Description</p>
+                </div>
+
+
+                <div class="pt-5">
+                    <p>Kategori:  <a href="#">@Model.Category.CategoryName</a>               
+                     </p>
+                </div>
+
+
+                <div class="pt-5 comment-wrap">
+                    <h3 class="mb-5 heading">@Model.Comments.Count Yorum</h3>
+                    <ul class="comment-list">
+                        @foreach(var comment in Model.Comments)
+                        {
+                            <li class="comment">
+                                <div class="vcard">
+                                    <img src="@comment.User.ImageUrl" alt="Image placeholder">
+                                </div>
+                                <div class="comment-body">
+                                    <h3>@comment.User.FullName</h3>
+                                    <div class="meta">@comment.CreatedDate</div>
+                                    <p>@comment.Content</p>
+                                </div>
+                            </li>
+                        }
+                      
+                    </ul>
+                    <!-- END comment-list -->
+                    @await Html.PartialAsync("/Views/Blog/BlogComment.cshtml", new CreateCommentDto { BlogId = Model.Id })
+                </div>
+
+            </div>
+
+            <!-- END main-content -->
+
+            <div class="col-md-12 col-lg-4 sidebar">
+                <div class="sidebar-box search-form-wrap">
+                    <form action="#" class="sidebar-search-form">
+                        <span class="bi-search"></span>
+                        <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+                    </form>
+                </div>
+                <!-- END sidebar-box -->
+                <div class="sidebar-box">
+                    <div class="bio text-center">
+                        <img src="@Model.Writer.ImageUrl" alt="Resim" class="img-fluid mb-3">
+                        <div class="bio-body">
+                            <h2>@Model.Writer.FullName</h2>
+                            <p class="mb-4">@Model.Writer.Email</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- END sidebar-box -->
+
+                @await Component.InvokeAsync("_BlogsByCategoryLatestBlogsComponent")
+
+                @await Html.PartialAsync("/Views/Blog/CategoryCountBlogComponent.cshtml")
+
+                <div class="sidebar-box">
+                    <h3 class="heading">Etiketler</h3>
+                    <ul class="tags">
+                        @foreach(var item in Model.BlogTags)
+                        {
+                            <li><a href="#">@item.Tag.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!-- END sidebar -->
+
+        </div>
+    </div>
+</section>

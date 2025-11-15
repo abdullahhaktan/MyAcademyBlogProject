@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<style>
+    body {
+        background-color: #f5f6fa !important;
+    }
+
+    .mini-stat {
+        width: 120px;
+        height: 120px;
+        border-radius: 14px;
+        padding: 10px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .mini-stat-title {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+    .mini-stat-value {
+        font-size: 26px;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    .stats-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    /* Grafik container ve kart düzeni */
+    .chart-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .chart-card {
+        flex: 1 1 calc(50% - 20px); /* İki kart yan yana, gap ile birlikte */
+        min-width: 300px; /* Çok küçük ekranlarda alt alta geçiş */
+    }
+
+    /* Mobil uyumluluk */
+    @@media (max-width: 768px) {
+        .chart-card
+    {
+        flex: 1 1 100%;
+    }
+
+    }
+</style>
+
+<div class="container-fluid mt-4">
+
+    <!-- Mini Stats -->
+    <div class="stats-row">
+
+        <div class="mini-stat" style="background: linear-gradient(135deg,#4e73df,#224abe);">
+            <span class="mini-stat-title">Postlar</span>
+            <span class="mini-stat-value">@ViewBag.TotalPosts</span>
+        </div>
+
+        <div class="mini-stat" style="background: linear-gradient(135deg,#1cc88a,#128f63);">
+            <span class="mini-stat-title">Yorumlar</span>
+            <span class="mini-stat-value">@ViewBag.TotalComments</span>
+        </div>
+
+        <div class="mini-stat" style="background: linear-gradient(135deg,#f6c23e,#c7961f);">
+            <span class="mini-stat-title">Kullanıcılar</span>
+            <span class="mini-stat-value">@ViewBag.TotalUsers</span>
+        </div>
+
+        <div class="mini-stat" style="background: linear-gradient(135deg, #dc3545, #a81a29);">
+            <span class="mini-stat-title">Kategoriler</span>
+            <span class="mini-stat-value">@ViewBag.TotalCategory</span>
+        </div>
+
+    </div>
+
+    <!-- Grafikler -->
+    <div class="chart-container mt-4">
+
+        <div class="chart-card">
+            <div class="card shadow-sm p-3">
+                <h5 class="text-center">Aya göre postlar</h5>
+                <canvas id="postsChart" height="150"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="card shadow-sm p-3">
+                <h5 class="text-center">Aya göre kullanıcı</h5>
+                <canvas id="usersChart" height="150"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    /* POSTS PER MONTH */
+    var postsData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject((IEnumerable<int>)ViewBag.PostsPerMounth));
+    var postsLabels = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    new Chart(document.getElementById('postsChart'), {
+        type: 'line',
+        data: {
+            labels: postsLabels,
+            datasets: [{
+                label: 'Post chart',
+                data: postsData,
+                borderWidth: 3,
+                tension: 0.3
+            }]
+        }
+    });
+
+    /* USERS PER MONTH */
+    var usersData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject((IEnumerable<int>)ViewBag.UsersPerMonth));
+    var usersLabels = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    new Chart(document.getElementById('usersChart'), {
+        type: 'bar',
+        data: {
+            labels: usersLabels,
+            datasets: [{
+                label: 'Kullanıcı chart',
+                data: usersData,
+                borderWidth: 1,
+            }]
+        }
+    });
+</script>
