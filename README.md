@@ -70,7 +70,7 @@ Bu projenin en dikkat çekici kısımları, yapay zeka modelleri ile olan entegr
         ```bash
         dotnet run
         ```
-
+        
 ---
 
 ## 🏷️ Etiketler
