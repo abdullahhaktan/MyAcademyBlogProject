@@ -9,7 +9,6 @@ namespace Blogy.WebUi.Controllers
         {
             var values = await _blogService.GetLast3BlogsAsync();
             ViewBag.last3Blogs = values;
-
             return View();
         }
     }
