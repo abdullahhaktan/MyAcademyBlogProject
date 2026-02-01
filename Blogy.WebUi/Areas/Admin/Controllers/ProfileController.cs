@@ -5,7 +5,6 @@ using Blogy.WebUi.Consts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Drawing;
 
 namespace Blogy.WebUi.Areas.Admin.Controllers
 {
@@ -51,6 +50,7 @@ namespace Blogy.WebUi.Areas.Admin.Controllers
             user.Title = model.Title;
 
             var result = await _userManager.UpdateAsync(user);
+
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "Güncelleme sırasında bir hata oluştu");

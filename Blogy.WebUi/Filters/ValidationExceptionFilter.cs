@@ -8,14 +8,14 @@ namespace Blogy.WebUi.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            if(context.Exception is not ValidationException validationException)
+            if (context.Exception is not ValidationException validationException)
             {
                 return;
             }
 
-            foreach(var error in validationException.Errors)
+            foreach (var error in validationException.Errors)
             {
-                context.ModelState.AddModelError(error.PropertyName,error.ErrorMessage);
+                context.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
             }
 
             var actionName = context.RouteData.Values["action"].ToString();

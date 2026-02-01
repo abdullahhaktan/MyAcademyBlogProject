@@ -2,13 +2,10 @@
 using Blogy.Entity.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUi.Controllers
 {
-    public class LoginController(SignInManager<AppUser> _signInManager , UserManager<AppUser> _usermanager) : Controller
+    public class LoginController(SignInManager<AppUser> _signInManager, UserManager<AppUser> _userManager) : Controller
     {
         public IActionResult Index()
         {
@@ -20,14 +17,14 @@ namespace Blogy.WebUi.Controllers
         {
             var result = await _signInManager.PasswordSignInAsync(loginDto.UserName, loginDto.Password, false, false);
 
-            if(!result.Succeeded)
+            if (!result.Succeeded)
             {
                 ModelState.AddModelError(string.Empty, "Kullanıcı adı veya şifre hatalı!");
                 return View(loginDto);
             }
 
             ViewBag.role = "Admin";
-            return RedirectToAction("Index", "Blog", new {area = "Admin"});
+            return RedirectToAction("Index", "Blog", new { area = "Admin" });
         }
 
         [HttpGet]
@@ -44,7 +41,7 @@ namespace Blogy.WebUi.Controllers
             if (!result.Succeeded)
             {
                 ModelState.AddModelError(string.Empty, "Kullanıcı adı veya şifre hatalı!");
-                return View("WriterLogin",loginDto);
+                return View("WriterLogin", loginDto);
             }
 
             ViewBag.role = "Writer";
@@ -74,7 +71,7 @@ namespace Blogy.WebUi.Controllers
 
         public async Task<IActionResult> Logout()
         {
-           await _signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Login");
         }
     }

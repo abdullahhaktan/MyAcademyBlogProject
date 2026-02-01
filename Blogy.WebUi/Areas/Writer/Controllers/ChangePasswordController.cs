@@ -38,7 +38,7 @@ namespace Blogy.WebUi.Areas.Writer.Controllers
             }
 
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "ChangePassword", new {area = Roles.Writer});
+            return RedirectToAction("Index", "ChangePassword", new { area = Roles.Writer });
         }
     }
 }

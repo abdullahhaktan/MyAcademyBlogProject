@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Blogy.Business.Services.OpenAIService
+﻿namespace Blogy.Business.Services.OpenAIService
 {
     public interface IOpenAIService
     {

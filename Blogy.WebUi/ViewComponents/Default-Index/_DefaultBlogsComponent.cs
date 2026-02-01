@@ -1,7 +1,5 @@
 ﻿using Blogy.Business.Services.CategoryServices;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUi.ViewComponents.Default_Index
 {

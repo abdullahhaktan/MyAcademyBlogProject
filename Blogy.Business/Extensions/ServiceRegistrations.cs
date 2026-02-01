@@ -1,8 +1,5 @@
 ﻿using Blogy.Business.DTOs.CategoryDtos;
 using Blogy.Business.Mappings;
-using Blogy.Business.Services.BlogServices;
-using Blogy.Business.Services.CategoryServices;
-using Blogy.Business.Services.CommentServices;
 using Blogy.Business.Services.HuggingFaceService;
 using Blogy.Business.Services.OpenAIService;
 using FluentValidation;
@@ -41,7 +38,6 @@ namespace Blogy.Business.Extensions
                  .AddFluentValidationAutoValidation()
                  .AddFluentValidationClientsideAdapters()
                  .AddValidatorsFromAssembly(typeof(CreateCategoryDto).Assembly);
-
         }
     }
 }

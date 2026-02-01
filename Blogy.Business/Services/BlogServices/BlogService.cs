@@ -2,16 +2,10 @@
 using Blogy.Business.DTOs.BlogDtos;
 using Blogy.DataAccess.Repositories.BlogRepositories;
 using Blogy.Entity.Entities;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blogy.Business.Services.BlogServices
 {
-    public class BlogService(IBlogRepository _blogRepository ,  IMapper _mapper) : IBlogService
+    public class BlogService(IBlogRepository _blogRepository, IMapper _mapper) : IBlogService
     {
         public async Task CreateAsync(CreateBlogDto dto)
         {
@@ -21,7 +15,7 @@ namespace Blogy.Business.Services.BlogServices
 
         public async Task DeleteAsync(int id)
         {
-           await _blogRepository.DeleteAsync(id);
+            await _blogRepository.DeleteAsync(id);
         }
 
         public async Task<List<ResultBlogDto>> GetAllAsync()
@@ -63,7 +57,7 @@ namespace Blogy.Business.Services.BlogServices
 
         public async Task UpdateAsync(UpdateBlogDto updateBlogDto)
         {
-            var entity =  _mapper.Map<Blog>(updateBlogDto);
+            var entity = _mapper.Map<Blog>(updateBlogDto);
             await _blogRepository.UpdateAsync(entity);
         }
 

@@ -2,11 +2,10 @@
 using Blogy.Business.Services.ContactServices;
 using Blogy.Business.Services.OpenAIService;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUi.Controllers
 {
-    public class ContactController(IContactService _contactService , IOpenAIService _openAiService) : Controller
+    public class ContactController(IContactService _contactService, IOpenAIService _openAiService) : Controller
     {
         public IActionResult Index()
         {

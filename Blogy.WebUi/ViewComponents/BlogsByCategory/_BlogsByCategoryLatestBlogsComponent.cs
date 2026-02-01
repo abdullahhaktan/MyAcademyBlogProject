@@ -1,10 +1,9 @@
 ﻿using Blogy.Business.Services.BlogServices;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Blogy.WebUi.ViewComponents.BlogsByCategory
 {
-    public class _BlogsByCategoryLatestBlogsComponent(IBlogService _blogService):ViewComponent
+    public class _BlogsByCategoryLatestBlogsComponent(IBlogService _blogService) : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

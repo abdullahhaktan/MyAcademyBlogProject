@@ -6,13 +6,13 @@ using FluentValidation;
 
 namespace Blogy.Business.Services.CommentServices
 {
-    public class CommentService(ICommentRepository _commentRepository , IMapper _mapper , IValidator<Comment> _validator) : ICommentService
+    public class CommentService(ICommentRepository _commentRepository, IMapper _mapper, IValidator<Comment> _validator) : ICommentService
     {
         public async Task CreateAsync(CreateCommentDto dto)
         {
-            var comment =  _mapper.Map<Comment>(dto);
+            var comment = _mapper.Map<Comment>(dto);
             var result = await _validator.ValidateAsync(comment);
-            if(!result.IsValid)
+            if (!result.IsValid)
             {
                 throw new ValidationException(result.Errors);
             }
@@ -21,7 +21,7 @@ namespace Blogy.Business.Services.CommentServices
 
         public async Task DeleteAsync(int id)
         {
-           await _commentRepository.DeleteAsync(id);
+            await _commentRepository.DeleteAsync(id);
         }
 
         public async Task<List<ResultCommentDto>> GetAllAsync()

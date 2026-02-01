@@ -1,14 +1,9 @@
 ﻿using Blogy.Business.DTOs.CategoryDtos;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blogy.Business.Validators.CategoryValidators
 {
-    public class CreateCategoryValidator:AbstractValidator<CreateCategoryDto>
+    public class CreateCategoryValidator : AbstractValidator<CreateCategoryDto>
     {
         public CreateCategoryValidator()
         {

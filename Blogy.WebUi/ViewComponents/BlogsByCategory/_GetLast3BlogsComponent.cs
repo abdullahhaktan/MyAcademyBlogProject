@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUi.ViewComponents.BlogsByCategory
 {
-    public class _GetLast3BlogsComponent(IBlogService _blogService):ViewComponent
+    public class _GetLast3BlogsComponent(IBlogService _blogService) : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

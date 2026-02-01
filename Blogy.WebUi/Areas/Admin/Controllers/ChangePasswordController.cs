@@ -4,13 +4,12 @@ using Blogy.WebUi.Consts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
 namespace Blogy.WebUi.Areas.Admin.Controllers
 {
     [Authorize]
     [Area(Roles.Admin)]
-    public class ChangePasswordController(UserManager<AppUser> _userManager , SignInManager<AppUser> _signInManager) : Controller
+    public class ChangePasswordController(UserManager<AppUser> _userManager, SignInManager<AppUser> _signInManager) : Controller
     {
         public IActionResult Index()
         {
@@ -39,7 +38,7 @@ namespace Blogy.WebUi.Areas.Admin.Controllers
             }
 
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "ChangePassword", new {area=Roles.Admin});
+            return RedirectToAction("Index", "ChangePassword", new { area = Roles.Admin });
         }
     }
 }

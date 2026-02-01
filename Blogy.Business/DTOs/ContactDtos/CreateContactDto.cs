@@ -1,11 +1,4 @@
-﻿using Blogy.Entity.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Blogy.Business.DTOs.ContactDtos
+﻿namespace Blogy.Business.DTOs.ContactDtos
 {
     public class CreateContactDto
     {

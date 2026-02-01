@@ -10,7 +10,7 @@ namespace Blogy.WebUi.Areas.Writer.Controllers
 {
     [Authorize(Roles = $"{Roles.Writer}")]
     [Area(Roles.Writer)]
-    public class ProfileController(UserManager<AppUser> _userManager , IMapper _mapper) : Controller
+    public class ProfileController(UserManager<AppUser> _userManager, IMapper _mapper) : Controller
     {
         public async Task<IActionResult> Index()
         {

@@ -1,12 +1,5 @@
 ﻿using Blogy.DataAccess.Context;
-using Blogy.DataAccess.Repositories.GenericRepositories;
-using Blogy.Entity.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blogy.DataAccess.Repositories.UserRepositories
 {
@@ -24,7 +17,7 @@ namespace Blogy.DataAccess.Repositories.UserRepositories
 
             for (int month = 1; month <= 12; month++)
             {
-                var count = await _context.Users.Where(u => u.CreatedDate.Year==currentYear && u.CreatedDate.Month == month).CountAsync();
+                var count = await _context.Users.Where(u => u.CreatedDate.Year == currentYear && u.CreatedDate.Month == month).CountAsync();
 
                 monthlyCounts.Add(count);
             }

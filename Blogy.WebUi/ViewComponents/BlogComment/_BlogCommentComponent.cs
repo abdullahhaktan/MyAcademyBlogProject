@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Blogy.WebUi.ViewComponents.BlogComment
 {
-    public class _BlogCommentComponent:ViewComponent
+    public class _BlogCommentComponent : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

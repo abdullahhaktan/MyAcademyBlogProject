@@ -2,7 +2,6 @@
 using Blogy.Entity.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 
 namespace Blogy.WebUi.Controllers
 {
@@ -37,7 +36,7 @@ namespace Blogy.WebUi.Controllers
                 foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError("", item.Description);
-                }    
+                }
                 return View(registerDto);
             }
 

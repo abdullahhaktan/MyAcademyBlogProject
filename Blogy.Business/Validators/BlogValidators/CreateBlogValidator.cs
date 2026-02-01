@@ -1,15 +1,9 @@
 ﻿using Blogy.Business.DTOs.BlogDtos;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blogy.Business.Validators.BlogValidators
 {
-    public class CreateBlogValidator:AbstractValidator<CreateBlogDto>
+    public class CreateBlogValidator : AbstractValidator<CreateBlogDto>
     {
         public CreateBlogValidator()
         {

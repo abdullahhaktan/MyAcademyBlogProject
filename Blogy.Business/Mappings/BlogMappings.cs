@@ -4,7 +4,7 @@ using Blogy.Entity.Entities;
 
 namespace Blogy.Business.Mappings
 {
-    public class BlogMappings:Profile
+    public class BlogMappings : Profile
     {
         public BlogMappings()
         {

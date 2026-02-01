@@ -1,17 +1,11 @@
 ﻿using AutoMapper;
 using Blogy.Business.DTOs.ContactDtos;
-using Blogy.Business.DTOs.ContactDtos;
 using Blogy.DataAccess.Repositories.ContactRepositories;
 using Blogy.Entity.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blogy.Business.Services.ContactServices
 {
-    public class ContactService(IContactRepository _contactRepository,IMapper _mapper) : IContactService
+    public class ContactService(IContactRepository _contactRepository, IMapper _mapper) : IContactService
     {
 
         public async Task CreateAsync(CreateContactDto contactDto)
