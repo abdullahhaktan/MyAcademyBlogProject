@@ -76,3 +76,46 @@ Bu projenin en dikkat çekici kısımları, yapay zeka modelleri ile olan entegr
 ## 🏷️ Etiketler
 
 `#dotnet` `#net8` `#aspnetcore` `#csharp` `#MVC` `#softwaredevelopment` `#Gemini` `#HuggingFace` `#AI` `#CodeFirst` `#NLayerArchitecture`
+
+## Görseller
+
+---
+
+![MyAcademyBlog1](https://github.com/user-attachments/assets/fc685d60-04fd-4e76-9622-89af819dcf5b)
+
+---
+
+![MyAcademyBlog2](https://github.com/user-attachments/assets/b95658e2-9072-48e0-a7f3-386904994187)
+
+---
+
+![MyAcademyBlog3](https://github.com/user-attachments/assets/53fc54e7-877a-4b10-a48b-205a0acb1360)
+
+---
+
+![MyAcademyBlog4](https://github.com/user-attachments/assets/6db86eea-9cc9-4359-8f8f-19039e725b8f)
+
+
+---
+
+![MyAcademyBlog5](https://github.com/user-attachments/assets/0e663b5f-2ac3-4183-b9c0-5f65c5007784)
+
+---
+
+![MyAcademyBlog6](https://github.com/user-attachments/assets/8a1edfc2-beae-4e95-917e-4973a62c2685)
+
+---
+
+![MyAcademyBlog7](https://github.com/user-attachments/assets/5376612b-89f3-4008-9745-29cf9ac04a45)
+
+---
+
+![MyAcademyBlog8](https://github.com/user-attachments/assets/fd38a2e8-8bda-4b67-8aa3-b7299e310b08)
+
+---
+
+![MyAcademyBlog9](https://github.com/user-attachments/assets/5cc4df2f-eb8b-4b12-a453-9b17e0a0b71a)
+
+---
+
+![MyAcademyBlog10](https://github.com/user-attachments/assets/b62be7a6-746b-4652-827b-c86b28c77c19)
