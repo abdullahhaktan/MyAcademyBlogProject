@@ -1,81 +1,65 @@
-# 🛒 CQRS & Mediator E-Commerce Project
+# 📝 Blogy CMS - AI Powered Content Management System
 
-Full-Stack .NET eğitim sürecimde geliştirdiğim **10. proje** olan bu çalışmada; modern yazılım mimarileri kullanılarak uçtan uca, ölçeklenebilir bir e-ticaret sistemi geliştirilmiştir.
+[![.NET 8](https://img.shields.io/badge/.NET-8.0-512bd4?logo=dotnet)](https://dotnet.microsoft.com/en-us/)
+[![EF Core](https://img.shields.io/badge/EF_Core-Code_First-blue)](https://learn.microsoft.com/en-us/ef/core/)
+[![AI Integrated](https://img.shields.io/badge/AI-Gemini_%26_Hugging_Face-orange)](https://huggingface.co/)
 
----
-
-## ✨ Proje Amacı ve Kapsam
-
-Bu projenin amacı; kurumsal mimari desenleri doğru senaryolarda uygulayarak, sürdürülebilir, genişletilebilir ve temiz kod prensiplerine uygun bir .NET e-ticaret altyapısı sunmaktır.
+**Blogy CMS**, M&Y Yazılım Eğitim Akademi bünyesinde geliştirdiğim, modern mimari prensiplerini yapay zeka yetenekleriyle birleştiren dinamik bir içerik yönetim sistemidir. 
 
 ---
 
-## ⚙️ Teknik Yapı ve Mimari Standartlar
+## 🧠 Yapay Zeka (AI) Entegrasyonları
 
-| Alan | Açıklama |
-| --- | --- |
-| Platform | .NET 8, ASP.NET Core MVC |
-| Veritabanı | Entity Framework Core (SQL Server) |
-| Mimari | CQRS & Mediator Pattern |
-| Veri Yönetimi | DTO & Repository Pattern |
-| Transaction | Unit of Work |
-| Depolama | Google Cloud Storage |
+Bu projeyi standart bir CMS'den ayıran, içerik üretim ve moderasyon süreçlerinde kullanılan akıllı servislerdir:
+
+* **🤖 Gemini Pro ile Makale Üretimi:** Kullanıcının belirlediği konuya göre 1000 kelimeye kadar anlamlı ve yapılandırılmış içerik üretilir.
+* **🛡️ Hugging Face ile Toksik Yorum Analizi:** Yorumlar yayınlanmadan önce moderasyon servisine gönderilir. Yüksek oranda toksiklik (zararlı içerik) tespit edilirse yayınlanması sistem tarafından otomatik olarak engellenir.
+* **📩 Akıllı Mesaj Yanıtlama:** İletişim formundan gelen mesajlar yapay zeka ile sınıflandırılır ve uygun yanıtlar otomatik olarak hazırlanır.
 
 ---
 
-## 🏗️ Kullanılan Mimari Yaklaşımlar
+## ⚙️ Teknik Mimari ve Standartlar
 
-- **CQRS (Command Query Responsibility Segregation)**  
-  Okuma (Query) ve yazma (Command) sorumlulukları net şekilde ayrıştırılmıştır.
+Proje, kurumsal yazılım geliştirme standartları takip edilerek **N-Tier (N-Katmanlı) Mimari** ile inşa edilmiştir:
 
-- **MediatR (Mediator Pattern)**  
-  Controller katmanı yalnızca isteği iletir, tüm iş mantığı Handler katmanında işlenir.
-
-- **Unit of Work & Transaction Yönetimi**  
-  Veritabanı işlemleri tek bir transaction altında yönetilerek veri tutarlılığı sağlanır.
-
-- **Observer Pattern**  
-  Event bazlı tetiklenen süreçler için kullanılmıştır.
-
-- **Chain of Responsibility**  
-  Doğrulama ve operasyon adımları zincir yapıda ele alınmıştır.
+| Özellik | Açıklama |
+| :--- | :--- |
+| **Mimari** | N-Layer Architecture (Presentation, Business, DataAccess, Entity) |
+| **Veri Yönetimi** | Entity Framework Core - Code First Yaklaşımı |
+| **Güvenlik** | ASP.NET Core Identity (Rol & Yetki Yönetimi) |
+| **Veri Transferi** | DTO (Data Transfer Object) & AutoMapper Entegrasyonu |
+| **Esneklik** | Dependency Injection & Servis Kayıt Yönetimi |
+| **UI Bileşenleri** | View Components & Responsive Tasarım |
 
 ---
 
-## 🧩 Modüler Yapı
+## 🛡️ Güvenlik ve Modüler Yapı
 
-- Admin paneli Area bazlı olarak tasarlanmıştır.
-- Kullanıcı, kategori, ürün ve kampanya yönetimi modülerdir.
-- Clean Code prensipleri benimsenmiştir.
-
----
-
-## ☁️ Ürün & Medya Yönetimi
-
-Ürün görselleri Google Cloud Storage üzerinde saklanmaktadır.
+* **Gelişmiş Rol Yönetimi:** Admin, Writer (Yazar) ve User rolleri için farklı yetkilendirme seviyeleri.
+* **Area Yapısı:** Yönetim panelleri (Admin, Writer, User) mantıksal olarak birbirinden ayrılmıştır.
+* **Dinamik Dashboard:** Blog istatistikleri ve yorum verileri grafiklerle (Chart.js vb.) görselleştirilmiştir.
+* **Validation:** Veri girişleri FluentValidation ve model bazlı kontrollerle güvence altına alınmıştır.
 
 ---
 
-## 🛠️ Kurulum ve Çalıştırma
+## 🛠️ Kullanılan Teknolojiler
 
-### 1. Repoyu Klonlayın
-git clone https://github.com/kullanici-adiniz/repo-adi.git
-
-### 2. Veritabanı Migration
-appsettings.json dosyasında bağlantı bilgisini güncelleyin ve:
-
-Update-Database
-
-### 3. Google Cloud Storage
-- Bucket oluşturun
-- Service Account JSON anahtarını tanımlayın
-- JSON dosyasını .gitignore içine ekleyin
-
-### 4. Çalıştırma
-dotnet run
+* **Backend:** .NET 8, ASP.NET Core MVC
+* **Frontend:** Bootstrap, JavaScript, HTML5, CSS3
+* **Database:** MS SQL Server
+* **AI SDKs:** Google Generative AI (Gemini), Hugging Face API
+* **Tools:** AutoMapper, Entity Framework Core
 
 ---
 
-## 🔗 Repo
+## 🚀 Kurulum
 
-https://lnkd.in/d_XiHNbD
+1.  Repoyu klonlayın: `git clone https://github.com/kullanici-adiniz/repo-adi.git`
+2.  `appsettings.json` dosyasında SQL Server Connection String ve AI API anahtarlarınızı (Gemini & Hugging Face) tanımlayın.
+3.  Package Manager Console üzerinden `update-database` komutunu çalıştırın.
+4.  Projeyi ayağa kaldırın.
+
+---
+
+## 🔗 Repo ve İletişim
+**GitHub:** [Blogy CMS Repo](https://github.com/kullanici-adiniz/repo-adi)
