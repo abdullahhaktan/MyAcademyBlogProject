@@ -61,5 +61,34 @@ Proje, kurumsal yazılım geliştirme standartları takip edilerek **N-Tier (N-K
 
 ---
 
-## 🔗 Repo ve İletişim
-**GitHub:** [Blogy CMS Repo](https://github.com/kullanici-adiniz/repo-adi)
+Proje Görselleri
+
+![MyAcademyBlog1](https://github.com/user-attachments/assets/d09cddb4-e35b-47fc-80b3-98286795a60b)
+
+---
+
+![MyAcademyBlog2](https://github.com/user-attachments/assets/9c0c39be-1915-4142-a104-82511be10171)
+
+---
+
+![MyAcademyBlog3](https://github.com/user-attachments/assets/5988dfcf-34f9-459b-a7db-9b98426ad0df)
+
+---
+
+![MyAcademyBlog4](https://github.com/user-attachments/assets/989f8fa8-557f-40fc-a649-b5a4c380100d)
+
+---
+
+![MyAcademyBlog5](https://github.com/user-attachments/assets/a955a700-8d8f-43e9-8aae-b55fdf7afd0f)
+
+----
+
+![MyAcademyBlog6](https://github.com/user-attachments/assets/5ceb6b81-3a43-4666-a7fd-c05e4ad278f6)
+
+---
+
+![MyAcademyBlog8](https://github.com/user-attachments/assets/85806050-86b0-4f29-903a-e6604a5a98a4)
+
+---
+
+![MyAcademyBlog7](https://github.com/user-attachments/assets/06fc546c-2689-461b-9f0b-f40b7cfd3e10)
