@@ -146,7 +146,7 @@ update-database
 
 ---
 
-## 👨‍💻 Geliştirici / Developer
+## 👨‍💻 Mühendis & Geliştirici / Engineer & Developer
 
 **Abdullah Haktan**
 GitHub → [abdullahhaktan](https://github.com/abdullahhaktan)
